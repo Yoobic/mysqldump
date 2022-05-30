@@ -7,5 +7,4 @@ build-decl/
 .rpt2_cache/
 
 
-dist/**/*.js.map
 yarn-error.log

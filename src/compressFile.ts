@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as zlib from 'zlib';
 
-function compressFile(filename: string): Promise<void> {
+async function compressFile(filename: string): Promise<void> {
     const tempFilename = `${filename}.temp`;
 
     fs.renameSync(filename, tempFilename);
@@ -20,7 +20,7 @@ function compressFile(filename: string): Promise<void> {
         const write = fs.createWriteStream(filename);
         read.pipe(zip).pipe(write);
 
-        return new Promise((resolve, reject) => {
+        return await new Promise((resolve, reject) => {
             write.on(
                 'error',
                 /* istanbul ignore next */ err => {
